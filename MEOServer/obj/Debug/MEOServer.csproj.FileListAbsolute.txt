@@ -1,0 +1,7 @@
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\bin\MEOServer.dll
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\bin\MEOServer.pdb
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\bin\EntityFramework.dll
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\bin\EntityFramework.xml
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\obj\Debug\MEOServer.dll
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\obj\Debug\MEOServer.pdb

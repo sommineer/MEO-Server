@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="MEOModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="MEOModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Events" EntityType="MEOModel.Event" />
+    <EntitySet Name="Locations" EntityType="MEOModel.Location" />
+    <AssociationSet Name="EventLocation" Association="MEOModel.EventLocation">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <EntitySet Name="Categories" EntityType="MEOModel.Category" />
+    <AssociationSet Name="EventCategory" Association="MEOModel.EventCategory">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="MEOModel.User" />
+    <AssociationSet Name="EventUser" Association="MEOModel.EventUser">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="Ratings" EntityType="MEOModel.Rating" />
+    <AssociationSet Name="RatingEvent" Association="MEOModel.RatingEvent">
+      <End Role="Rating" EntitySet="Ratings" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="RatingUser" Association="MEOModel.RatingUser">
+      <End Role="Rating" EntitySet="Ratings" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Title" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="false" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="true" />
+    <Property Type="Int32" Name="IconId" Nullable="true" />
+    <Property Type="Int32" Name="QRId" Nullable="true" />
+    <Property Type="DateTime" Name="LastModified" Nullable="false" />
+    <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+    <NavigationProperty Name="Location" Relationship="MEOModel.EventLocation" FromRole="Event" ToRole="Location" />
+    <NavigationProperty Name="Categories" Relationship="MEOModel.EventCategory" FromRole="Event" ToRole="Category" />
+    <NavigationProperty Name="User" Relationship="MEOModel.EventUser" FromRole="Event" ToRole="User" />
+    <NavigationProperty Name="Ratings" Relationship="MEOModel.RatingEvent" FromRole="Event" ToRole="Rating" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="StreetAddress1" Nullable="false" />
+    <Property Type="String" Name="StreetAddress2" Nullable="true" />
+    <Property Type="String" Name="City" Nullable="false" />
+    <Property Type="String" Name="State" Nullable="false" />
+    <Property Type="String" Name="ZipCode" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="true" />
+    <Property Type="String" Name="Website" Nullable="true" />
+    <Property Type="Int32" Name="IconId" Nullable="true" />
+    <Property Type="Double" Name="Latitude" Nullable="false" />
+    <Property Type="Double" Name="Longitude" Nullable="false" />
+    <Property Type="DateTime" Name="LastModified" Nullable="false" />
+    <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+    <NavigationProperty Name="Events" Relationship="MEOModel.EventLocation" FromRole="Location" ToRole="Event" />
+  </EntityType>
+  <Association Name="EventLocation">
+    <End Type="MEOModel.Event" Role="Event" Multiplicity="*" />
+    <End Type="MEOModel.Location" Role="Location" Multiplicity="1" />
+  </Association>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="DateTime" Name="LastModifiedBy" Nullable="false" />
+    <Property Type="String" Name="LastModifiedOn" Nullable="false" />
+    <NavigationProperty Name="Events" Relationship="MEOModel.EventCategory" FromRole="Category" ToRole="Event" />
+  </EntityType>
+  <Association Name="EventCategory">
+    <End Type="MEOModel.Event" Role="Event" Multiplicity="*" />
+    <End Type="MEOModel.Category" Role="Category" Multiplicity="*" />
+  </Association>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Email" Nullable="false" />
+    <Property Type="String" Name="Password" Nullable="false" />
+    <Property Type="String" Name="Salt" Nullable="false" />
+    <Property Type="String" Name="IsBusiness" Nullable="false" />
+    <Property Type="String" Name="BusinessName" Nullable="true" />
+    <Property Type="String" Name="FirstName" Nullable="true" />
+    <Property Type="String" Name="LastName" Nullable="true" />
+    <Property Type="DateTime" Name="LastModified" Nullable="false" />
+    <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+    <NavigationProperty Name="Events" Relationship="MEOModel.EventUser" FromRole="User" ToRole="Event" />
+    <NavigationProperty Name="Ratings" Relationship="MEOModel.RatingUser" FromRole="User" ToRole="Rating" />
+  </EntityType>
+  <Association Name="EventUser">
+    <End Type="MEOModel.Event" Role="Event" Multiplicity="*" />
+    <End Type="MEOModel.User" Role="User" Multiplicity="1" />
+  </Association>
+  <EntityType Name="Rating">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Double" Name="Value" Nullable="false" />
+    <Property Type="DateTime" Name="LastModified" Nullable="false" />
+    <Property Type="String" Name="LastModifiedBy" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="MEOModel.RatingEvent" FromRole="Rating" ToRole="Event" />
+    <NavigationProperty Name="Users" Relationship="MEOModel.RatingUser" FromRole="Rating" ToRole="User" />
+  </EntityType>
+  <Association Name="RatingEvent">
+    <End Type="MEOModel.Rating" Role="Rating" Multiplicity="*" />
+    <End Type="MEOModel.Event" Role="Event" Multiplicity="1" />
+  </Association>
+  <Association Name="RatingUser">
+    <End Type="MEOModel.Rating" Role="Rating" Multiplicity="*" />
+    <End Type="MEOModel.User" Role="User" Multiplicity="*" />
+  </Association>
+</Schema>
