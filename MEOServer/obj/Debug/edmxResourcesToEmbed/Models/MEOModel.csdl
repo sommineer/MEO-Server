@@ -18,10 +18,6 @@
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
     <EntitySet Name="Ratings" EntityType="MEOModel.Rating" />
-    <AssociationSet Name="RatingEvent" Association="MEOModel.RatingEvent">
-      <End Role="Rating" EntitySet="Ratings" />
-      <End Role="Event" EntitySet="Events" />
-    </AssociationSet>
     <AssociationSet Name="RatingUser" Association="MEOModel.RatingUser">
       <End Role="Rating" EntitySet="Ratings" />
       <End Role="User" EntitySet="Users" />
@@ -44,7 +40,6 @@
     <NavigationProperty Name="Location" Relationship="MEOModel.EventLocation" FromRole="Event" ToRole="Location" />
     <NavigationProperty Name="Categories" Relationship="MEOModel.EventCategory" FromRole="Event" ToRole="Category" />
     <NavigationProperty Name="User" Relationship="MEOModel.EventUser" FromRole="Event" ToRole="User" />
-    <NavigationProperty Name="Ratings" Relationship="MEOModel.RatingEvent" FromRole="Event" ToRole="Rating" />
   </EntityType>
   <EntityType Name="Location">
     <Key>
@@ -113,13 +108,8 @@
     <Property Type="Double" Name="Value" Nullable="false" />
     <Property Type="DateTime" Name="LastModified" Nullable="false" />
     <Property Type="String" Name="LastModifiedBy" Nullable="false" />
-    <NavigationProperty Name="Event" Relationship="MEOModel.RatingEvent" FromRole="Rating" ToRole="Event" />
     <NavigationProperty Name="Users" Relationship="MEOModel.RatingUser" FromRole="Rating" ToRole="User" />
   </EntityType>
-  <Association Name="RatingEvent">
-    <End Type="MEOModel.Rating" Role="Rating" Multiplicity="*" />
-    <End Type="MEOModel.Event" Role="Event" Multiplicity="1" />
-  </Association>
   <Association Name="RatingUser">
     <End Type="MEOModel.Rating" Role="Rating" Multiplicity="*" />
     <End Type="MEOModel.User" Role="User" Multiplicity="*" />

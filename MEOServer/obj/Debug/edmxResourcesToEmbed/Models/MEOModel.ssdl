@@ -24,10 +24,6 @@
       <End Role="Event" EntitySet="Events" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
-    <AssociationSet Name="RatingEvent" Association="MEOModel.Store.RatingEvent">
-      <End Role="Rating" EntitySet="Ratings" />
-      <End Role="Event" EntitySet="Events" />
-    </AssociationSet>
     <AssociationSet Name="FK_RatingUser_Rating" Association="MEOModel.Store.FK_RatingUser_Rating">
       <End Role="Rating" EntitySet="Ratings" />
       <End Role="RatingUser" EntitySet="RatingUser" />
@@ -105,7 +101,6 @@
     <Property Name="Value" Type="float" Nullable="false" />
     <Property Name="LastModified" Type="datetime" Nullable="false" />
     <Property Name="LastModifiedBy" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Event_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="EventCategory">
     <Key>
@@ -144,18 +139,6 @@
       </Principal>
       <Dependent Role="Event">
         <PropertyRef Name="User_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="RatingEvent">
-    <End Role="Rating" Type="MEOModel.Store.Ratings" Multiplicity="*" />
-    <End Role="Event" Type="MEOModel.Store.Events" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Event">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Rating">
-        <PropertyRef Name="Event_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

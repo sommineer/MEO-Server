@@ -17,7 +17,6 @@ namespace MEOServer.Models
         public Event()
         {
             this.Categories = new HashSet<Category>();
-            this.Ratings = new HashSet<Rating>();
         }
     
         public int Id { get; set; }
@@ -34,7 +33,6 @@ namespace MEOServer.Models
         public virtual Location Location { get; set; }
         public virtual ICollection<Category> Categories { get; set; }
         public virtual User User { get; set; }
-        public virtual ICollection<Rating> Ratings { get; set; }
     }
     
 }

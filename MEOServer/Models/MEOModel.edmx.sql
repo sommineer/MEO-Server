@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 02/11/2012 01:35:17
+-- Date Created: 02/11/2012 15:55:42
 -- Generated from EDMX file: C:\Users\Erik Sommer\git\MEOServer\MEOServer\Models\MEOModel.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,53 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_EventLocation]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Events] DROP CONSTRAINT [FK_EventLocation];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventCategory_Event]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventCategory] DROP CONSTRAINT [FK_EventCategory_Event];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventCategory_Category]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventCategory] DROP CONSTRAINT [FK_EventCategory_Category];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Events] DROP CONSTRAINT [FK_EventUser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RatingEvent]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Ratings] DROP CONSTRAINT [FK_RatingEvent];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RatingUser_Rating]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RatingUser] DROP CONSTRAINT [FK_RatingUser_Rating];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RatingUser_User]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RatingUser] DROP CONSTRAINT [FK_RatingUser_User];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Events]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Events];
+GO
+IF OBJECT_ID(N'[dbo].[Locations]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Locations];
+GO
+IF OBJECT_ID(N'[dbo].[Categories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Categories];
+GO
+IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users];
+GO
+IF OBJECT_ID(N'[dbo].[Ratings]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Ratings];
+GO
+IF OBJECT_ID(N'[dbo].[EventCategory]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[EventCategory];
+GO
+IF OBJECT_ID(N'[dbo].[RatingUser]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RatingUser];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -92,8 +134,7 @@ CREATE TABLE [dbo].[Ratings] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Value] float  NOT NULL,
     [LastModified] datetime  NOT NULL,
-    [LastModifiedBy] nvarchar(max)  NOT NULL,
-    [Event_Id] int  NOT NULL
+    [LastModifiedBy] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -210,20 +251,6 @@ ADD CONSTRAINT [FK_EventUser]
 CREATE INDEX [IX_FK_EventUser]
 ON [dbo].[Events]
     ([User_Id]);
-GO
-
--- Creating foreign key on [Event_Id] in table 'Ratings'
-ALTER TABLE [dbo].[Ratings]
-ADD CONSTRAINT [FK_RatingEvent]
-    FOREIGN KEY ([Event_Id])
-    REFERENCES [dbo].[Events]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RatingEvent'
-CREATE INDEX [IX_FK_RatingEvent]
-ON [dbo].[Ratings]
-    ([Event_Id]);
 GO
 
 -- Creating foreign key on [Ratings_Id] in table 'RatingUser'

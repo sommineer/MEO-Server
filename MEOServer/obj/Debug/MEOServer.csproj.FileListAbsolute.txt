@@ -5,3 +5,10 @@ C:\Users\Erik Sommer\git\MEOServer\MEOServer\bin\EntityFramework.xml
 C:\Users\Erik Sommer\git\MEOServer\MEOServer\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Erik Sommer\git\MEOServer\MEOServer\obj\Debug\MEOServer.dll
 C:\Users\Erik Sommer\git\MEOServer\MEOServer\obj\Debug\MEOServer.pdb
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\bin\Glimpse.Core.dll
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\bin\RouteDebugger.dll
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\bin\AutoMapper.dll
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\bin\AutoMapper.xml
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\bin\Newtonsoft.Json.dll
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\bin\Newtonsoft.Json.pdb
+C:\Users\Erik Sommer\git\MEOServer\MEOServer\bin\Newtonsoft.Json.xml

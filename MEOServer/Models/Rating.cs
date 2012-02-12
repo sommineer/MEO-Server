@@ -24,7 +24,6 @@ namespace MEOServer.Models
         public System.DateTime LastModified { get; set; }
         public string LastModifiedBy { get; set; }
     
-        public virtual Event Event { get; set; }
         public virtual ICollection<User> Users { get; set; }
     }
     

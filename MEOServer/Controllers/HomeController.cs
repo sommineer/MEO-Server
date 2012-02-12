@@ -14,6 +14,7 @@ namespace MEOServer.Controllers
 
         public String Index()
         {
+            /*
             MEOModelContainer entities = new MEOModelContainer();
             Location location = new Location();
             location.Name = "Test";
@@ -27,8 +28,8 @@ namespace MEOServer.Controllers
 
             entities.Locations.Add(location);
             entities.SaveChanges();
-
-            return entities.Locations.Find(2).ToString();
+            */
+            return "hey";
         }
 
     }

@@ -1,2 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<publishData />
+<publishData>
+  <publishProfile publishUrl="http://xorbixmobile.com/" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="xorbixmobile.com" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FTP" replaceMatchingFiles="True" userName="erikmeo" savePWD="True" userPWD="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAu76G6cerWEmNMAOmv7uvQwAAAAACAAAAAAAQZgAAAAEAACAAAAA+sOWMg8z3rUt5aK6Mxw8rmpo8J/FnfGXbPA4neGeIxAAAAAAOgAAAAAIAACAAAAArXywv7vToVbPec8qlx52wVikbsZ7zcjHwpum3LNIDZhAAAAAsAJLAIUl+pp06QY2IAk1sQAAAAJSMAct5uuu/2H3Gj/Vgu9V6KKwztCXTlkNfWAIH/jt0j8yMX+vbmocuvWQ4tut68ytwPJo9mGrZlbHlWEFrvpE=" SelectedForPublish="True" />
+</publishData>

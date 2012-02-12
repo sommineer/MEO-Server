@@ -29,10 +29,6 @@
       <End Role="Event" EntitySet="Events" />
       <End Role="User" EntitySet="Users" />
     </AssociationSet>
-    <AssociationSet Name="RatingEvent" Association="MEOModel.Store.RatingEvent">
-      <End Role="Rating" EntitySet="Ratings" />
-      <End Role="Event" EntitySet="Events" />
-    </AssociationSet>
     <AssociationSet Name="FK_RatingUser_Rating" Association="MEOModel.Store.FK_RatingUser_Rating">
       <End Role="Rating" EntitySet="Ratings" />
       <End Role="RatingUser" EntitySet="RatingUser" />
@@ -110,7 +106,6 @@
     <Property Name="Value" Type="float" Nullable="false" />
     <Property Name="LastModified" Type="datetime" Nullable="false" />
     <Property Name="LastModifiedBy" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Event_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="EventCategory">
     <Key>
@@ -149,18 +144,6 @@
       </Principal>
       <Dependent Role="Event">
         <PropertyRef Name="User_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="RatingEvent">
-    <End Role="Rating" Type="MEOModel.Store.Ratings" Multiplicity="*" />
-    <End Role="Event" Type="MEOModel.Store.Events" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Event">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Rating">
-        <PropertyRef Name="Event_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -234,10 +217,6 @@
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
           <EntitySet Name="Ratings" EntityType="MEOModel.Rating" />
-          <AssociationSet Name="RatingEvent" Association="MEOModel.RatingEvent">
-            <End Role="Rating" EntitySet="Ratings" />
-            <End Role="Event" EntitySet="Events" />
-          </AssociationSet>
           <AssociationSet Name="RatingUser" Association="MEOModel.RatingUser">
             <End Role="Rating" EntitySet="Ratings" />
             <End Role="User" EntitySet="Users" />
@@ -260,7 +239,6 @@
           <NavigationProperty Name="Location" Relationship="MEOModel.EventLocation" FromRole="Event" ToRole="Location" />
           <NavigationProperty Name="Categories" Relationship="MEOModel.EventCategory" FromRole="Event" ToRole="Category" />
           <NavigationProperty Name="User" Relationship="MEOModel.EventUser" FromRole="Event" ToRole="User" />
-          <NavigationProperty Name="Ratings" Relationship="MEOModel.RatingEvent" FromRole="Event" ToRole="Rating" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
@@ -329,13 +307,8 @@
           <Property Type="Double" Name="Value" Nullable="false" />
           <Property Type="DateTime" Name="LastModified" Nullable="false" />
           <Property Type="String" Name="LastModifiedBy" Nullable="false" />
-          <NavigationProperty Name="Event" Relationship="MEOModel.RatingEvent" FromRole="Rating" ToRole="Event" />
           <NavigationProperty Name="Users" Relationship="MEOModel.RatingUser" FromRole="Rating" ToRole="User" />
         </EntityType>
-        <Association Name="RatingEvent">
-          <End Type="MEOModel.Rating" Role="Rating" Multiplicity="*" />
-          <End Type="MEOModel.Event" Role="Event" Multiplicity="1" />
-        </Association>
         <Association Name="RatingUser">
           <End Type="MEOModel.Rating" Role="Rating" Multiplicity="*" />
           <End Type="MEOModel.User" Role="User" Multiplicity="*" />
@@ -442,14 +415,6 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="RatingEvent" TypeName="MEOModel.RatingEvent" StoreEntitySet="Ratings">
-      <EndProperty Name="Event">
-        <ScalarProperty Name="Id" ColumnName="Event_Id" />
-      </EndProperty>
-      <EndProperty Name="Rating">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="RatingUser" TypeName="MEOModel.RatingUser" StoreEntitySet="RatingUser">
       <EndProperty Name="Rating">
         <ScalarProperty Name="Id" ColumnName="Ratings_Id" />
@@ -495,10 +460,6 @@
           <ConnectorPoint PointX="5.6875" PointY="5.625" />
         </AssociationConnector>
         <EntityTypeShape EntityType="MEOModel.Rating" Width="1.5" PointX="0.875" PointY="4.25" Height="1.9802864583333335" />
-        <AssociationConnector Association="MEOModel.RatingEvent">
-          <ConnectorPoint PointX="2.375" PointY="4.4804996744791659" />
-          <ConnectorPoint PointX="4.625" PointY="4.4804996744791659" />
-        </AssociationConnector>
         <AssociationConnector Association="MEOModel.RatingUser">
           <ConnectorPoint PointX="2.375" PointY="6.0237939453125" />
           <ConnectorPoint PointX="5.25" PointY="6.0237939453125" />

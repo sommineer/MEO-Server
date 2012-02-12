@@ -97,14 +97,6 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="RatingEvent" TypeName="MEOModel.RatingEvent" StoreEntitySet="Ratings">
-      <EndProperty Name="Event">
-        <ScalarProperty Name="Id" ColumnName="Event_Id" />
-      </EndProperty>
-      <EndProperty Name="Rating">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="RatingUser" TypeName="MEOModel.RatingUser" StoreEntitySet="RatingUser">
       <EndProperty Name="Rating">
         <ScalarProperty Name="Id" ColumnName="Ratings_Id" />

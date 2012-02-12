@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using MEOServer.Models;
+using MEOServer.Areas.Api.Models;
+using AutoMapper;
 
 namespace MEOServer
 {
@@ -35,6 +38,10 @@ namespace MEOServer
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            // Setup the maps used for conversion between the database objects and the view objects
+            Mapper.CreateMap<Location, LocationApiViewModel>();
+            Mapper.CreateMap<LocationApiViewModel, LocationApiViewModel>();
         }
     }
 }
